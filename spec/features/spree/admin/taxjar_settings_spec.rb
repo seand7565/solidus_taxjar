@@ -17,13 +17,16 @@ RSpec.feature 'Admin TaxJar Settings', js: true do
       let(:api_token) { "token" }
 
       it "shows a blank settings page" do
-
         visit "/admin"
         click_on "Settings"
         expect(page).to have_content("Taxes")
         click_on "Taxes"
         expect(page).to have_content("TaxJar Settings")
         click_on "TaxJar Settings"
+        # expect(page).to have_content "Settings / Taxes / TaxJar Settings"
+        within(:css, "[data-hook=\"admin_settings_sub_tabs\"]") do
+          expect(page).to have_content("Taxes")
+        end
         expect(page).not_to have_content "You must provide a TaxJar API token"
       end
     end

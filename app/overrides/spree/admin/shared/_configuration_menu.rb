@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+Spree::BackendConfiguration::CONFIGURATION_TABS << :taxjar_settings
 Deface::Override.new(
   virtual_path: 'spree/admin/shared/_taxes_tabs',
   name: 'add_taxjar_admin_menu_links',
